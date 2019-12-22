@@ -1,6 +1,6 @@
-# Choice one, A or B?
+# README
 
-### Signup, Login and Logout
+## Signup, Login, Logout
 
 ```python
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
@@ -20,7 +20,7 @@ def logout(request):
     return
 ```
 
-### Decorators in Django
+## Decorators in django
 
 ```python
 from django.views.decorators.http import require_POST
@@ -36,3 +36,4 @@ def create(request):
 def delete(request):
     return
 ```
+
