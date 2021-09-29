@@ -1,0 +1,4 @@
+autopep8==1.5.7
+django-bootstrap4==3.0.1
+pipdeptree==2.1.0
+setuptools==56.0.0
