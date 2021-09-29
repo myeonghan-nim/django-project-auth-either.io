@@ -1,11 +1,11 @@
 # README
 
-## Signup, Login, Logout
+## Account Handling
 
 ```python
-from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import login as auth_login
 from django.contrib.auth import logout as auth_logout
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 
 
 def signup(request):
@@ -20,11 +20,11 @@ def logout(request):
     return
 ```
 
-## Decorators in django
+## Django Decorator
 
 ```python
-from django.views.decorators.http import require_POST
 from django.contrib.auth.decorators import login_required
+from django.views.decorators.http import require_POST
 
 
 @require_POST
@@ -36,4 +36,3 @@ def create(request):
 def delete(request):
     return
 ```
-
