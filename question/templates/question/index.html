@@ -1,23 +1,15 @@
 {% extends 'question/base.html' %}
-
 {% load bootstrap4 %}
 
 {% block body %}
-
   {% for question in questions %}
-
     <div class="jumbotron bg-light m-5">
       <div class="d-flex justify-content-between align-items-center">
-
         <h1 class="display-4">{{question.title}}</h1>
-
         <a class="btn btn-outline-primary btn-lg text-center" href="{% url 'question:detail' question.id %}" role="button">
           Go to vote
         </a>
-
       </div>
     </div>
-
   {% endfor %}
-
 {% endblock %}
