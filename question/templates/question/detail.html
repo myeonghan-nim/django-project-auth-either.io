@@ -1,4 +1,4 @@
-{% extends 'questions/base.html' %}
+{% extends 'question/base.html' %}
 
 {% load bootstrap4 %}
 
@@ -8,7 +8,7 @@
 
     <h1 class="display-4 text-center">{{question.title}}</h1>
     <p class="lead text-center">{{question.choice_1}} vs {{question.choice_2}}</p>
-    
+
     <div class="progress my-3">
       <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: {{percent_1}}%" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100">
         {{percent_1}} %
@@ -21,21 +21,21 @@
     <hr class="my-4">
 
     <div class="d-flex flex-row-reverse">
-      <form action="{% url 'questions:delete' question.id %}" method="POST">
+      <form action="{% url 'question:delete' question.id %}" method="POST">
         {% csrf_token %}
         <input type="submit" class="btn btn-outline-danger mx-1" value="Delete">
       </form>
-      <a class="btn btn-outline-warning mx-1" href="{% url 'questions:update' question.id %}" role="button">Edit</a>
+      <a class="btn btn-outline-warning mx-1" href="{% url 'question:update' question.id %}" role="button">Edit</a>
     </div>
 
-    <form action="{% url 'questions:choice_create' question.id %}" method="POST">
+    <form action="{% url 'question:choice_create' question.id %}" method="POST">
       {% csrf_token %}
       {% bootstrap_form choice_form %}
       <input type="submit" class="btn btn-outline-primary btn-block" value="Choice">
     </form>
 
     <hr class="my-4">
-    
+
     {% for choice in question.choice_set.all %}
       {% if choice.pick == 1 %}
         <div class="alert alert-primary d-flex justify-content-between align-items-center" role="alert">
@@ -43,7 +43,7 @@
         <div class="alert alert-danger d-flex justify-content-between align-items-center" role="alert">
       {% endif %}
           {{choice.comment}}
-          <form action="{% url 'questions:choice_delete' question.id choice.id %}" method="POST">
+          <form action="{% url 'question:choice_delete' question.id choice.id %}" method="POST">
             {% csrf_token %}
             <input type="submit" class="btn btn-outline-dark" value="Delete">
           </form>

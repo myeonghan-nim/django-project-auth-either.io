@@ -16,7 +16,7 @@ def index(request):
         'questions': questions,
     }
 
-    return render(request, 'questions/index.html', context)
+    return render(request, 'question/index.html', context)
 
 
 def detail(request, question_id):
@@ -43,12 +43,12 @@ def detail(request, question_id):
         'percent_2': percent_2,
     }
 
-    return render(request, 'questions/detail.html', context)
+    return render(request, 'question/detail.html', context)
 
 
 @login_required
 def create(request):
-    
+
     # 1. user request GET for input datas(request form)
     # 6. user request POST after inputted not corrext datas
     # 12. user request POST after inputted correct datas
@@ -64,7 +64,7 @@ def create(request):
             form.save()
 
             # 17. redirect main index page
-            return redirect('questions:index')
+            return redirect('question:index')
     # 2. if request is GET
     else:
         # 3. save empty ModelForm to variable(form) for return to user
@@ -78,7 +78,7 @@ def create(request):
 
     # 5. return form.html
     # 11. return form.html
-    return render(request, 'questions/form.html', context)
+    return render(request, 'question/form.html', context)
 
 
 def update(request, question_id):
@@ -91,15 +91,15 @@ def update(request, question_id):
         if form.is_valid():
             form.save()
 
-            return redirect('questions:detail', question_id)
+            return redirect('question:detail', question_id)
     else:
         form = QuestionForm(instance=question)
-    
+
     context = {
         'form': form,
     }
 
-    return render(request, 'questions/form.html', context)
+    return render(request, 'question/form.html', context)
 
 
 def delete(request, question_id):
@@ -107,10 +107,10 @@ def delete(request, question_id):
     if request.method == 'POST':
         get_object_or_404(Question, id=question_id).delete()
 
-        return redirect('questions:index')
+        return redirect('question:index')
     else:
 
-        return redirect('questions:detail', question_id)
+        return redirect('question:detail', question_id)
 
 
 @require_POST
@@ -125,7 +125,7 @@ def choice_create(request, question_id):
         choice.question = question
         choice.save()
 
-    return redirect('questions:detail', question_id)
+    return redirect('question:detail', question_id)
 
 
 @require_POST
@@ -133,5 +133,4 @@ def choice_delete(request, question_id, choice_id):
 
     get_object_or_404(Choice, id=choice_id).delete()
 
-    return redirect('questions:detail', question_id)
-    
+    return redirect('question:detail', question_id)
