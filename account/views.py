@@ -16,7 +16,7 @@ def signup(request):
         if form.is_valid():
             form.save()
 
-            return redirect('questions:index')
+            return redirect('question:index')
     else:
         form = UserCreationForm()
 
@@ -24,7 +24,7 @@ def signup(request):
         'form': form,
     }
 
-    return render(request, 'accounts/form.html', context)
+    return render(request, 'account/form.html', context)
 
 def login(request):
 
@@ -34,18 +34,18 @@ def login(request):
         if form.is_valid():
             auth_login(request, form.get_user())
 
-        return redirect('questions:index')
+        return redirect('question:index')
     else:
         form = AuthenticationForm()
-    
+
     context = {
         'form': form,
     }
 
-    return render(request, 'accounts/form.html', context)
+    return render(request, 'account/form.html', context)
 
 def logout(request):
-    
+
     auth_logout(request)
 
-    return redirect('questions:index')
+    return redirect('question:index')
