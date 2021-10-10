@@ -1,4 +1,4 @@
-# Clone Project: either.io
+# Project: advanced either.io
 
 ## Account Handling
 
