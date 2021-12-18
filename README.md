@@ -1,6 +1,6 @@
-# Project: advanced either.io
+# Project: authenticated either.io
 
-## Account Handling
+## authenticate
 
 ```python
 from django.contrib.auth import login as auth_login
@@ -20,7 +20,7 @@ def logout(request):
     return
 ```
 
-## Django Decorator
+## django decorator
 
 ```python
 from django.contrib.auth.decorators import login_required
