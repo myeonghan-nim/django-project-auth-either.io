@@ -1,4 +1,4 @@
-# Project: authenticated either.io
+# Project: auth either.io
 
 ## authenticate
 
